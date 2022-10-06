@@ -1,7 +1,15 @@
-import '../styles/globals.css'
+import "../styles/globals.css";
+import "bootstrap/dist/css/bootstrap.css";
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+import { store } from "../store";
+import { Provider } from "react-redux";
+
+function NextShopping({ Component, pageProps }) {
+  return (
+    <Provider store={store}>
+      <Component {...pageProps} />
+    </Provider>
+  );
 }
 
-export default MyApp
+export default NextShopping;
