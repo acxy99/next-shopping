@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart } from "../../slices/cart-slice";
 function Product({ name, id, imgURL, price }) {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ function Product({ name, id, imgURL, price }) {
       <img src={imgURL} alt={name} />
       <h2>{name}</h2>
       <p>$ {price}</p>
-      <button onClick={add_to_cart()}>Add to cart</button>
+      <button onClick={add_to_cart}>Add to cart</button>
     </div>
   );
 }

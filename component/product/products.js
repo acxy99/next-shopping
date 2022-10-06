@@ -37,7 +37,10 @@ const DUMMY_PRODUCTS = [
     price: 25,
   },
 ];
+import { useSelector } from "react-redux";
 const Products = () => {
+  const cartItems = useSelector((state) => state.cart.itemList);
+  console.log(cartItems);
   return (
     <div>
       <ul className="products-container">

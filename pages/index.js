@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 export default function Home() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   console.log(isLoggedIn);
+
   return (
     <div className={styles.container}>
       <Head>
