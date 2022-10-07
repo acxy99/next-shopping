@@ -1,33 +1,41 @@
 import React from "react";
+import { Trash3 } from "react-bootstrap-icons";
 import { useDispatch } from "react-redux";
-import { cartActions } from "./../store/cartSlice";
+import { addItemToCart, removeItemFromCart } from "../../slices/cart-slice";
 const CartItem = ({ name, quantity, total, price, id }) => {
-  //   const dispatch = useDispatch();
-  //   const removeHandler = () => {
-  //     dispatch(cartActions.removeFromCart(id));
-  //   };
-  //   const addHandler = () => {
-  //     dispatch(
-  //       cartActions.addToCart({
-  //         id,
-  //         name,
-  //         price,
-  //       })
-  //     );
-  //   };
+  const dispatch = useDispatch();
+  const incrementCartItem = () => {
+    dispatch(addItemToCart(id, name, price));
+  };
+  const decrementCartItem = () => {
+    dispatch(removeItemFromCart(id));
+  };
   return (
-    <div className="cartItem">
-      <h2> {name}</h2>
-      <p>${price} /-</p>
-      <p>x{quantity}</p>
-      <article>Total ${100}</article>
-      {/* <button className="cart-actions" onClick={removeHandler}>
-        -
-      </button>
-      <button className="cart-actions" onClick={addHandler}>
-        +
-      </button> */}
-    </div>
+    <tr>
+      <td>{name}</td>
+      <td>{price}</td>
+      <td>
+        <div class="input-group w-auto justify-content-center align-items-center">
+          <button
+            class="button-minus border rounded-circle icon-shape icon-sm mx-1 "
+            onClick={decrementCartItem}
+          >
+            -
+          </button>
+          {quantity}
+          <button
+            className="button-plus border rounded-circle icon-shape icon-sm"
+            onClick={incrementCartItem}
+          >
+            +
+          </button>
+        </div>
+      </td>
+      <td>{total}</td>
+      <td>
+        <Trash3 />
+      </td>
+    </tr>
   );
 };
 

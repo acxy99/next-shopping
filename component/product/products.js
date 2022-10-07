@@ -38,24 +38,34 @@ const DUMMY_PRODUCTS = [
   },
 ];
 import { useSelector } from "react-redux";
+import { Container, Row, Col } from "react-bootstrap";
 const Products = () => {
   const cartItems = useSelector((state) => state.cart.itemList);
   console.log(cartItems);
   return (
-    <div>
-      <ul className="products-container">
-        {DUMMY_PRODUCTS.map((product, index) => (
-          <li key={index}>
-            <Product
-              id={product.id}
-              name={product.name}
-              imgURL={product.imgURL}
-              price={product.price}
-            />
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Container fluid>
+      <Row className="py-3 px-lg-5">
+        <Col md={3}>
+          <div>Filter Content</div>
+        </Col>
+        <Col md={9}>
+          <Row>
+            {/* Searching Component */}
+            <Col md={12}></Col>
+            <Row className="d-flex jusrify-content-evenly">
+              {DUMMY_PRODUCTS.map((product, index) => (
+                <Product
+                  id={product.id}
+                  name={product.name}
+                  imgURL={product.imgURL}
+                  price={product.price}
+                />
+              ))}
+            </Row>
+          </Row>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

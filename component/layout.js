@@ -1,21 +1,16 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import CartItems from "./cart/items";
 import Header from "./headers";
 import Products from "./product/products";
 
 function Layout() {
-  let cartItems = useSelector((state) => state.cart.itemList);
-  let total = cartItems
-    .map((item) => item.totalPrice)
-    .reduce((a, b) => a + b, 0);
+  const showCart = useSelector((state) => state.cart.showCart);
   return (
     <div className="layout">
       <Header />
       <Products />
-      <div className="total-price">
-        <h3>Total: ${total}</h3>
-        <button className="orderBtn">Place Order</button>
-      </div>{" "}
+      {<CartItems />}
     </div>
   );
 }

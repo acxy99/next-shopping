@@ -1,16 +1,50 @@
 import React from "react";
+import { Col, Container, Row } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import Checkout from "../checkout";
 import CartItem from "./item";
 
 const CartItems = () => {
+  const cartItems = useSelector((state) => state.cart.itemList);
   return (
-    <div className="cart-container">
-      <h2>Your Cart</h2>
-      <ul>
-        <li>
-          <CartItem id={1} price={2500} name={"Macbook"} />
-        </li>
-      </ul>
-    </div>
+    <Container fluid className="pt-5">
+      <Row className="px-lg-5">
+        <Col md={8}>
+          <Row>
+            <Col md={12}>
+              <h3>Your Cart</h3>
+            </Col>
+            <Col md={12} className="table-responsive">
+              <table className="table table-bordered text-center">
+                <thead>
+                  <tr className="header-top">
+                    <th>Products</th>
+                    <th>Price</th>
+                    <th>Quanatity</th>
+                    <th>Total</th>
+                    <th>Remove</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {cartItems.map((item) => (
+                    <CartItem
+                      id={item.id}
+                      price={item.price}
+                      quantity={item.quantity}
+                      name={item.name}
+                      total={item.totalPrice}
+                    />
+                  ))}
+                </tbody>
+              </table>
+            </Col>
+          </Row>
+        </Col>
+        <Col md={4}>
+          <Checkout />
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

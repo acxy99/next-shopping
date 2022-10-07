@@ -30,7 +30,18 @@ const cartSlice = createSlice({
         state.totalQuantity++;
       }
     },
-    removeItemFromCart(state, action) {},
+    removeItemFromCart(state, action) {
+      const id = action.payload;
+      const exsitingItem = state.itemList.find((item) => item.id == id);
+
+      if (exsitingItem.quantity == 1) {
+        state.itemList = state.itemList.filter((item) => item.id !== id);
+        state.totalQuantity--;
+      } else {
+        exsitingItem.quantity--;
+        exsitingItem.totalPrice -= exsitingItem.price;
+      }
+    },
     setShowCart(state) {
       state.showCart = true;
     },
