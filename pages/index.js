@@ -3,11 +3,59 @@ import Image from "next/image";
 import styles from "../styles/Home.module.scss";
 import Login from "./login";
 import Shopping from "./shopping";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { showNotification } from "../slices/ui-slice";
+import Notification from "../component/notification";
+import { useEffect, useRef } from "react";
+
 export default function Home() {
+  const isFirstRender = useRef(true);
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   console.log(isLoggedIn);
 
+  const notification = useSelector((state) => state.ui.notification);
+
+  const cart = useSelector((state) => state.cart);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const sendReq = async () => {
+      dispatch(
+        showNotification({
+          open: true,
+          message: "Sending Request",
+          type: "warning",
+        })
+      );
+      const res = await fetch(
+        process.env.NEXT_PUBLIC_REALTIME_FIREBASE_URL + "cartItems.json",
+        {
+          method: "PUT",
+          body: JSON.stringify(cart),
+        }
+      );
+      const data = res.json();
+      dispatch(
+        showNotification({
+          open: true,
+          message: "Sending Request Successfully",
+          type: "success",
+        })
+      );
+    };
+    console.log(cart);
+    if (cart.itemList.length > 0) {
+      sendReq().catch((err) => {
+        dispatch(
+          showNotification({
+            open: true,
+            message: "Sending Request Failed",
+            type: "error",
+          })
+        );
+      });
+    }
+  }, [cart]);
   return (
     <div className={styles.container}>
       <Head>
@@ -24,6 +72,9 @@ export default function Home() {
           rel="stylesheet"
         ></link>
       </Head>
+      {notification && (
+        <Notification type={notification.type} message={notification.message} />
+      )}
       {!isLoggedIn && <Login />}
       {isLoggedIn && <Shopping />}
     </div>

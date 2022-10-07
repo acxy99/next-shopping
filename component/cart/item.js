@@ -5,7 +5,7 @@ import { addItemToCart, removeItemFromCart } from "../../slices/cart-slice";
 const CartItem = ({ name, quantity, total, price, id }) => {
   const dispatch = useDispatch();
   const incrementCartItem = () => {
-    dispatch(addItemToCart(id, name, price));
+    dispatch(addItemToCart({ id, name, price }));
   };
   const decrementCartItem = () => {
     dispatch(removeItemFromCart(id));
