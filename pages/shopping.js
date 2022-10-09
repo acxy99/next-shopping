@@ -1,8 +1,8 @@
 import React from "react";
-import Layout from "../component/layout";
+import Products from "../component/Products";
 
 function Shopping() {
-  return <Layout />;
+  return <Products />;
 }
 
 export default Shopping;

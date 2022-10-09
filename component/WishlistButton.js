@@ -7,8 +7,8 @@ function Wishlist() {
     <Col md={12}>
       <div className="d-flex justify-content-center border px-4 py-2">
         <span
+          className="icon-color"
           style={{
-            color: "#ee6c4d",
             fontSize: "14px",
           }}
         >

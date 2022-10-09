@@ -1,7 +1,7 @@
 import React from "react";
 import { Trash3 } from "react-bootstrap-icons";
 import { useDispatch } from "react-redux";
-import { addItemToCart, removeItemFromCart } from "../../slices/cart-slice";
+import { addItemToCart, removeItemFromCart } from "../slices/cart-slice";
 const CartItem = ({ name, quantity, total, price, id }) => {
   const dispatch = useDispatch();
   const incrementCartItem = () => {

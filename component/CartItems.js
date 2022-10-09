@@ -1,13 +1,13 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import Checkout from "../checkout";
-import CartItem from "./item";
+import Checkout from "./Checkout";
+import CartItem from "./CartItem";
 
 const CartItems = () => {
   const cartItems = useSelector((state) => state.cart.itemList);
   return (
-    <Container fluid className="pt-5">
+    <Container fluid>
       <Row className="px-lg-5">
         <Col md={8}>
           <Row>

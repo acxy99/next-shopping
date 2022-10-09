@@ -5,13 +5,12 @@ import Login from "./login";
 import Shopping from "./shopping";
 import { useSelector, useDispatch } from "react-redux";
 import { showNotification } from "../slices/ui-slice";
-import Notification from "../component/notification";
+import Notification from "../component/Notification";
 import { useEffect, useRef } from "react";
+import Header from "../component/Header";
 
 export default function Home() {
   const isFirstRender = useRef(true);
-  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-  console.log(isLoggedIn);
 
   const notification = useSelector((state) => state.ui.notification);
 
@@ -75,8 +74,7 @@ export default function Home() {
       {notification && (
         <Notification type={notification.type} message={notification.message} />
       )}
-      {!isLoggedIn && <Login />}
-      {isLoggedIn && <Shopping />}
+      <Shopping />
     </div>
   );
 }

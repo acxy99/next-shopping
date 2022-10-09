@@ -1,5 +1,5 @@
 .header-top {
-  background: #e0fbfc !important;
+  background: #b4cde6 !important;
 }
 
 .product-card {
@@ -23,11 +23,32 @@
 }
 
 .search-box-icon {
-  color: #ee6c4d !important;
+  color: #628e90 !important;
   background-color: white !important;
   border: 1px solid #f0f0f0 !important;
-  border-radius: 0;
+  border-radius: unset !important;
 }
 
-// .product-desc {
-// }
+.icon-color {
+  color: #628e90;
+}
+
+.btn-no-style {
+  border: 0px;
+  background-color: transparent;
+}
+
+.modal-auth {
+  --bs-modal-border-radius: 0rem !important;
+}
+
+.input-auth {
+  width: 100%;
+  height: 50px;
+  border: 1px #f0f0f0 solid !important;
+  &:focus {
+    border-color: rgba(126, 104, 239, 0.8);
+    box-shadow: none;
+    outline: 0 none;
+  }
+}

@@ -4,10 +4,12 @@ import "bootstrap/scss/bootstrap.scss";
 
 import { store } from "../store";
 import { Provider } from "react-redux";
+import Header from "../component/Header";
 
 function NextShopping({ Component, pageProps }) {
   return (
     <Provider store={store}>
+      <Header />
       <Component {...pageProps} />
     </Provider>
   );

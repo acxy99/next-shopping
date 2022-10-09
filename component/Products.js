@@ -1,5 +1,5 @@
 import React from "react";
-import Product from ".";
+import Product from "./Product";
 const DUMMY_PRODUCTS = [
   {
     id: 1,
@@ -52,16 +52,14 @@ const Products = () => {
           <Row>
             {/* Searching Component */}
             <Col md={12}></Col>
-            <Row className="d-flex jusrify-content-evenly">
-              {DUMMY_PRODUCTS.map((product, index) => (
-                <Product
-                  id={product.id}
-                  name={product.name}
-                  imgURL={product.imgURL}
-                  price={product.price}
-                />
-              ))}
-            </Row>
+            {DUMMY_PRODUCTS.map((product, index) => (
+              <Product
+                id={product.id}
+                name={product.name}
+                imgURL={product.imgURL}
+                price={product.price}
+              />
+            ))}
           </Row>
         </Col>
       </Row>

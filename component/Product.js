@@ -1,8 +1,8 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addItemToCart } from "../../slices/cart-slice";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Button, Col } from "react-bootstrap";
 import { Cart3 } from "react-bootstrap-icons";
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "../slices/cart-slice";
 function Product({ name, id, imgURL, price }) {
   const dispatch = useDispatch();
 
@@ -28,12 +28,6 @@ function Product({ name, id, imgURL, price }) {
         </div>
       </div>
     </Col>
-    // <Col>
-
-    //   <h2>{name}</h2>
-    //   <p>$ {price}</p>
-    //   <button onClick={add_to_cart}>Add to cart</button>
-    // </Col>
   );
 }
 
