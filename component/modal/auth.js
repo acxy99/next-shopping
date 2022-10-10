@@ -1,12 +1,15 @@
-import Modal from "react-bootstrap/Modal";
-import { Row, Col, Tab, Nav } from "react-bootstrap";
+import { Col, Nav, Row, Tab } from "react-bootstrap";
 import { XLg } from "react-bootstrap-icons";
-import SignIn from "../auth-tabs/SignIn";
+import Modal from "react-bootstrap/Modal";
 import Register from "../auth-tabs/Register";
-const ModalAuth = () => {
+import SignIn from "../auth-tabs/SignIn";
+
+const ModalAuth = (props) => {
+  const { showTrue, authType, closeModal } = props;
+
   return (
     <Modal
-      show={true}
+      show={showTrue}
       size="md"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -15,10 +18,10 @@ const ModalAuth = () => {
       <Modal.Body>
         <div className="p-4">
           <Row className="justify-content-around">
-            <Tab.Container id="left-tabs-example" defaultActiveKey="signIn">
+            <Tab.Container defaultActiveKey={authType}>
               <Row>
                 <Col md={12} className="d-flex  align-items-center pb-3">
-                  <Col md={11} className="">
+                  <Col md={11}>
                     <Nav
                       variant="pills"
                       className="flex-row justify-content-center "
@@ -32,8 +35,9 @@ const ModalAuth = () => {
                     </Nav>
                   </Col>
                   <Col md={1} className="text-end">
-                    {" "}
-                    <XLg style={{ fontSize: "20px" }} />
+                    <button className="btn-no-style" onClick={closeModal}>
+                      <XLg style={{ fontSize: "20px" }} />
+                    </button>
                   </Col>
                 </Col>
                 <Col md={12}>

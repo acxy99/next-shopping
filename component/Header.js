@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import {
@@ -10,14 +11,13 @@ import {
   Person,
   Search,
   Twitter,
-  Youtube,
+  Youtube
 } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../slices/auth-slice";
 import Cart from "./CartButton";
 import ModalAuth from "./modal/auth";
 import Wishlist from "./WishlistButton";
-import { useRouter } from "next/router";
 
 //#EDF1FF !important
 const Header = () => {
@@ -29,6 +29,10 @@ const Header = () => {
   };
 
   const [isModalAuthOpen, setIsModalAuthOpen] = useState(false);
+  const [authType, setAuthType] = useState("");
+  const handleModalClose = () => {
+    setIsModalAuthOpen(!isModalAuthOpen);
+  };
 
   const redirect_homepage = () => {
     router.push("/");
@@ -56,14 +60,23 @@ const Header = () => {
                       className="btn-no-style"
                       onClick={() => {
                         setIsModalAuthOpen(true);
+                        setAuthType("signIn");
                       }}
                     >
                       <BoxArrowInLeft style={{ marginBottom: "3px" }} />
                       &nbsp;SignIn&nbsp;
                     </button>
                     |&nbsp;
-                    <PencilSquare style={{ marginBottom: "3px" }} />
-                    &nbsp;Register
+                    <button
+                      className="btn-no-style"
+                      onClick={() => {
+                        setIsModalAuthOpen(true);
+                        setAuthType("register");
+                      }}
+                    >
+                      <PencilSquare style={{ marginBottom: "3px" }} />
+                      &nbsp;Register
+                    </button>
                   </span>
                 )}
               </div>
@@ -130,7 +143,13 @@ const Header = () => {
           </Col>
         </Row>
       </Container>
-      {isModalAuthOpen && <ModalAuth />}
+      {isModalAuthOpen && (
+        <ModalAuth
+          closeModal={handleModalClose}
+          showTrue={isModalAuthOpen}
+          authType={authType}
+        />
+      )}
     </div>
   );
 };
