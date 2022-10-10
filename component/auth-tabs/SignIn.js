@@ -1,43 +1,56 @@
 import { Col } from "react-bootstrap";
-const SignIn = () => {
+import { login } from "../../slices/auth-slice";
+import { useDispatch } from "react-redux";
+const SignIn = (props) => {
+  const { closeModal } = props;
+  const dispatch = useDispatch();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    dispatch(login());
+    closeModal();
+  };
   return (
     <>
       {" "}
-      <Col md={12} className="pt-3">
-        {/* Email */}
-        <div class="form-floating mb-3">
-          <input
-            type="email"
-            className="form-control input-auth"
-            id="floatingInput"
-            placeholder="Enter your Email Adress"
-          />
-          <label for="floatingInput" className="auth-label">
-            Email Address
-          </label>
-        </div>
-      </Col>
-      <Col md={12} className="pt-2">
-        {/* password */}
-        <div class="form-floating">
-          <input
-            type="password"
-            className="form-control input-auth"
-            id="floatingPassword"
-            placeholder="Password"
-          />
-          <label for="floatingPassword" className="auth-label">
-            Password
-          </label>
-        </div>
-      </Col>
-      <Col md={12} className="pt-4 text-center">
-        {/* Submit Buttion */}
-        <button type="submit" className="btn-auth">
-          {" "}
-          SIGN IN{" "}
-        </button>
-      </Col>
+      <form onSubmit={handleSubmit}>
+        {" "}
+        <Col md={12} className="pt-3">
+          {/* Email */}
+          <div class="form-floating mb-3">
+            <input
+              type="email"
+              className="form-control input-auth"
+              id="floatingInput"
+              placeholder="Enter your Email Adress"
+            />
+            <label for="floatingInput" className="auth-label">
+              Email Address
+            </label>
+          </div>
+        </Col>
+        <Col md={12} className="pt-2">
+          {/* password */}
+          <div class="form-floating">
+            <input
+              type="password"
+              className="form-control input-auth"
+              id="floatingPassword"
+              placeholder="Password"
+            />
+            <label for="floatingPassword" className="auth-label">
+              Password
+            </label>
+          </div>
+        </Col>
+        <Col md={12} className="pt-4 text-center">
+          {/* Submit Buttion */}
+          <button type="submit" className="btn-auth">
+            {" "}
+            SIGN IN{" "}
+          </button>
+        </Col>
+      </form>
       <Col md={12} className="pt-3 d-flex align-items-center">
         <Col md={5}>
           <hr />

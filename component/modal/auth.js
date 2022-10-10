@@ -60,7 +60,7 @@ const ModalAuth = (props) => {
                 <Col md={12}>
                   <Tab.Content>
                     <Tab.Pane eventKey="signIn">
-                      <SignIn />
+                      <SignIn closeModal={closeModal} />
                     </Tab.Pane>
                     <Tab.Pane eventKey="register">
                       <Register />

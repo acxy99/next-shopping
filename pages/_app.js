@@ -5,13 +5,16 @@ import "bootstrap/scss/bootstrap.scss";
 import { store } from "../store";
 import { Provider } from "react-redux";
 import Header from "../component/Header";
+import { SessionProvider } from "next-auth/react";
 
-function NextShopping({ Component, pageProps }) {
+function NextShopping({ Component, pageProps, session }) {
   return (
-    <Provider store={store}>
-      <Header />
-      <Component {...pageProps} />
-    </Provider>
+    <SessionProvider session={session}>
+      <Provider store={store}>
+        <Header />
+        <Component {...pageProps} />
+      </Provider>
+    </SessionProvider>
   );
 }
 

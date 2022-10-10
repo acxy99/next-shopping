@@ -11,7 +11,7 @@ import {
   Person,
   Search,
   Twitter,
-  Youtube
+  Youtube,
 } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../slices/auth-slice";
