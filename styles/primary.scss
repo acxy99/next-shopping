@@ -89,18 +89,20 @@ hr {
   border: 1px #3d5a80 solid;
 }
 
-.nav-pills .nav-link.active .nav-pills .show > .nav-link {
+.nav-pills .nav-link.active {
   font-size: 12px;
   margin: 3px 8px 3px 8px;
   border: 1px #3d5a80 solid !important;
   color: #fff !important;
   background-color: #3d5a80 !important;
+  border-radius: 0px;
 }
 
 .nav-pills .nav-link {
   font-size: 12px;
   margin: 3px 8px 3px 8px;
   border: 1px #3d5a80 solid !important;
-  color: #fff !important;
-  background-color: #3d5a80 !important;
+  color: #3d5a80 !important;
+  background-color: #fff !important;
+  border-radius: 0px !important;
 }

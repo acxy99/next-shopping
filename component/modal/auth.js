@@ -15,11 +15,7 @@ const ModalAuth = () => {
       <Modal.Body>
         <div className="p-4">
           <Row className="justify-content-around">
-            <Tab.Container
-              id="left-tabs-example"
-              activeKey="signIn"
-              defaultActiveKey="signIn"
-            >
+            <Tab.Container id="left-tabs-example" defaultActiveKey="signIn">
               <Row>
                 <Col md={12} className="d-flex  align-items-center pb-3">
                   <Col md={11} className="">
@@ -27,10 +23,10 @@ const ModalAuth = () => {
                       variant="pills"
                       className="flex-row justify-content-center "
                     >
-                      <Nav.Item className="auth-tabs me-1">
+                      <Nav.Item>
                         <Nav.Link eventKey="signIn">Sign In</Nav.Link>
                       </Nav.Item>
-                      <Nav.Item className="auth-tabs">
+                      <Nav.Item>
                         <Nav.Link eventKey="register">Register</Nav.Link>
                       </Nav.Item>
                     </Nav>
