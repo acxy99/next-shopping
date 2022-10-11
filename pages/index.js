@@ -1,13 +1,10 @@
 import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.scss";
-import Login from "./login";
-import Shopping from "./shopping";
-import { useSelector, useDispatch } from "react-redux";
-import { showNotification } from "../slices/ui-slice";
-import Notification from "../component/Notification";
 import { useEffect, useRef } from "react";
-import Header from "../component/Header";
+import { useDispatch, useSelector } from "react-redux";
+import Notification from "../component/Notification";
+import { showNotification } from "../slices/ui-slice";
+import styles from "../styles/Home.module.scss";
+import Shopping from "./shopping";
 
 export default function Home() {
   const isFirstRender = useRef(true);

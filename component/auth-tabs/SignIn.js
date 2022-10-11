@@ -1,12 +1,14 @@
 import { Col } from "react-bootstrap";
 import { login } from "../../slices/auth-slice";
 import { useDispatch } from "react-redux";
+import { signIn } from "next-auth/react";
+
 const SignIn = (props) => {
   const { closeModal } = props;
   const dispatch = useDispatch();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
     dispatch(login());
     closeModal();
   };
@@ -67,7 +69,14 @@ const SignIn = (props) => {
         </Col>
       </Col>
       <Col md={12} className="pt-3">
-        <button type="submit" className="btn-auth-google">
+        <button
+          type="submit"
+          className="btn-auth-google"
+          onClick={() => {
+            signIn();
+            dispatch(login());
+          }}
+        >
           <span className="pe-4">
             <img
               style={{ width: "22px", paddingBottom: "2px" }}

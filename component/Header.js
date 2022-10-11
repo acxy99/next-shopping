@@ -18,9 +18,10 @@ import { logout } from "../slices/auth-slice";
 import Cart from "./CartButton";
 import ModalAuth from "./modal/auth";
 import Wishlist from "./WishlistButton";
-
+import { useSession } from "next-auth/react";
 //#EDF1FF !important
 const Header = () => {
+  const { data: session } = useSession();
   const router = useRouter();
   const authenticated = useSelector((state) => state.auth.isLoggedIn);
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ const Header = () => {
           <Col md={6}>
             <div className="text-start justify-content-center">
               <div style={{ padding: "1px" }}>
-                {authenticated ? (
+                {session ? (
                   <span>
                     <Person style={{ marginBottom: "3px" }} />
                     &nbsp;MyAccount&nbsp;|
